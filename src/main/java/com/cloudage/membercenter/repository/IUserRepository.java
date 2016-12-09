@@ -8,5 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 @Repository
 public interface IUserRepository extends PagingAndSortingRepository<User, Integer>{
+	
+	
 
 }
