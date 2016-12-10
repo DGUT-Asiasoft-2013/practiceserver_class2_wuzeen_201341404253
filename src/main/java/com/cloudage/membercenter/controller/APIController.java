@@ -60,6 +60,27 @@ public class APIController {
 		return userService.save(user);
 	}
 	
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public@ResponseBody User register(
+			@RequestParam String account,
+			@RequestParam String passwordHash,
+			HttpServletRequest request){
+		User user=userService.login(account);
+		
+		if(user!=null&&user.getPasswordHash().equals(passwordHash))
+		{
+			request.getSession().setAttribute("current_user", user);
+			System.out.println("return:");
+			return user;
+		}
+			
+		return null;
+	}
 	
+	@RequestMapping(value = "/me", method=RequestMethod.GET)
+	public @ResponseBody User getCurrentUser(HttpServletRequest request){
+	
+		return (User)request.getSession().getAttribute("current_user");
+	}
 	
 }

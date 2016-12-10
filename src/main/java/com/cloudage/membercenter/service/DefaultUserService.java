@@ -22,4 +22,10 @@ public class DefaultUserService implements IUserService {
 	public User save(User user) {
 		return userRepo.save(user);
 	}
+
+	@Override
+	public User login(String account) {
+
+		return 	userRepo.findUserByAccount(account);
+	}
 }
