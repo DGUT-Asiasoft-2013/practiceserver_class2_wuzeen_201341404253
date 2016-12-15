@@ -20,6 +20,7 @@ public class DefaultUserService implements IUserService {
 
 	@Override
 	public User save(User user) {
+
 		return userRepo.save(user);
 	}
 
@@ -27,5 +28,16 @@ public class DefaultUserService implements IUserService {
 	public User login(String account) {
 
 		return 	userRepo.findUserByAccount(account);
+	}
+
+	@Override
+	public User findUserById(int id) {
+		return userRepo.findUserById(id);
+	}
+
+	@Override
+	public User findUserByEmail(String email) {
+	
+		return userRepo.findUserByEmail(email);
 	}
 }
